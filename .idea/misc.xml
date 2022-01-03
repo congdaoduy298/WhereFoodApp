@@ -43,7 +43,20 @@
         <entry key="..\:/ProjectFoodApp-master/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.12771739130434784" />
         <entry key="..\:/ProjectFoodApp-master/app/src/main/res/layout/fragment_saved_places.xml" value="0.16" />
         <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/activity_cart.xml" value="0.1234375" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/activity_direction.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/activity_food_restaurant.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/activity_forget.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/activity_login.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/activity_main.xml" value="0.12552083333333333" />
         <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/activity_maps.xml" value="0.13360507246376813" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/fragment_home.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/layout_cart_item.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/layout_item_drink.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/place_item_layout.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/saved_item_layout.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/step_item_layout.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/toolbar_layout.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/bachn/AndroidStudioProjects/food/app/src/main/res/layout/username_dialog_layout.xml" value="0.12552083333333333" />
         <entry key="..\:/android/WhereFoodApp/app/src/main/res/drawable/bg_login.xml" value="0.2037037037037037" />
         <entry key="..\:/android/WhereFoodApp/app/src/main/res/drawable/ic_bookmark.xml" value="0.14444444444444443" />
         <entry key="..\:/android/WhereFoodApp/app/src/main/res/drawable/ic_camera.xml" value="0.2574074074074074" />

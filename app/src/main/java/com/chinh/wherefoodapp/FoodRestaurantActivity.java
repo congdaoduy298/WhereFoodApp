@@ -139,7 +139,13 @@ drinkLoadListener.onDrindLoadFailed(error.getMessage());
         recycler_drink.setLayoutManager(gridLayoutManager);
         recycler_drink.addItemDecoration(new SpaceItemDecoration());
 
-        btnCart.setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
+        Intent newIntent = new Intent(this, CartActivity.class);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            newIntent.putExtras(bundle);
+        }
+
+        btnCart.setOnClickListener(v -> startActivity(newIntent));
 
         btnBack.setOnClickListener(v->finish());
     }

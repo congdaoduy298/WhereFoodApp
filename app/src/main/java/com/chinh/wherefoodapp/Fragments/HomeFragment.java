@@ -679,25 +679,17 @@ public class HomeFragment<onOrderFoodClick> extends Fragment implements OnMapRea
     @Override
     public void onOrderClick(GooglePlaceModel googlePlaceModel){
 
-        Intent delivery_intent = new Intent(requireContext(), MapsActivity.class);
-        delivery_intent.putExtra("current_lat", currentLocation.getLatitude());
-        delivery_intent.putExtra("current_lng", currentLocation.getLongitude());
-
-
         if (googlePlaceModel.getGeometry().getLocation().getLat() != null && googlePlaceModel.getGeometry().getLocation().getLng() != null) {
             Intent intent = new Intent(requireContext(), FoodRestaurantActivity.class);
+            intent.putExtra("lat", googlePlaceModel.getGeometry().getLocation().getLat());
+            intent.putExtra("lng", googlePlaceModel.getGeometry().getLocation().getLng());
+            intent.putExtra("current_lat", currentLocation.getLatitude());
+            intent.putExtra("current_lng", currentLocation.getLongitude());
             intent.putExtra("name", googlePlaceModel.getName());
             startActivity(intent);
-
-//            Intent delivery_intent = new Intent(requireContext(), MapsActivity.class);
-            delivery_intent.putExtra("lat", googlePlaceModel.getGeometry().getLocation().getLat());
-            delivery_intent.putExtra("lng", googlePlaceModel.getGeometry().getLocation().getLng());
-//            startActivity(delivery_intent);
-
         } else {
             Toast.makeText(requireContext(), "Not Found", Toast.LENGTH_SHORT).show();
         }
-        startActivity(delivery_intent);
     }
 
     private void sendDatatoActivity() {

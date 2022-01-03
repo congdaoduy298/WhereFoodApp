@@ -78,6 +78,10 @@ public class CartActivity extends AppCompatActivity implements ICartLoadListener
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CartActivity.this, MapsActivity.class);
+                Bundle bundle = getIntent().getExtras();
+                if (bundle != null) {
+                    intent.putExtras(bundle);
+                }
                 startActivity(intent);
             }
         });

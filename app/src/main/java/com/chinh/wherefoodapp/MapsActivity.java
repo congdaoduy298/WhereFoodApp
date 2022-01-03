@@ -103,6 +103,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return resizedBitmap;
     }
 
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -203,7 +204,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("oto",40,80))));
 
                                 handler = new Handler();
-                                index = 1;
+                                index = -1;
                                 next = 1;
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -216,7 +217,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                             startPosition = polylineList.get(index);
                                             endPosition = polylineList.get(next);
                                         }
-                                        else ;
+                                        else {
+                                            Toast.makeText(getApplicationContext(), "Successful.", Toast.LENGTH_LONG).show();
+                                            // Giao hang thanh cong - Co the viet them tai day
+                                            return;
+                                        }
                                         ValueAnimator valueAnimator = ValueAnimator.ofFloat(0,1);
                                         valueAnimator.setDuration(3000);
                                         valueAnimator.setInterpolator(new LinearInterpolator());
