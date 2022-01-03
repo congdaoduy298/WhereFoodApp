@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:orientation="vertical"
+    tools:context=".FoodRestaurantActivity"
+    android:background="@drawable/orangelight_background"
+    >
+
+    <LinearLayout
+        android:id="@+id/panel"
+        android:background="@drawable/restaurant_name"
+        android:weightSum="16"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:src="@drawable/ic_launcher_foreground"
+            android:layout_gravity="start|center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"/>
+
+        <com.chinh.wherefoodapp.custom.textview.Glowist
+            android:id="@+id/tvPrice"
+            android:text="THE   MENU "
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_weight="12"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"/>
+
+
+        <FrameLayout
+            android:id="@+id/btnCart"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/cardButton"
+                android:src="@drawable/ic_baseline_shopping_cart_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
+
+            <com.nex3z.notificationbadge.NotificationBadge
+                android:id="@+id/badge"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toRightOf = "@id/cartButton"
+                android:layout_alignTop= "@+id/cartButton"
+                android:layout_marginLeft="10dp"
+                app:nbMaxTextLength="2"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_drink"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/panel"
+        android:layout_marginTop="15dp"
+        android:padding="8dp" />
+
+</RelativeLayout>

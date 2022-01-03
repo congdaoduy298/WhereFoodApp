@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "834278736324",
+    "project_id": "wherefoodapp-2ce52",
+    "storage_bucket": "wherefoodapp-2ce52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834278736324:android:d6739601f1e6197c722491",
+        "android_client_info": {
+          "package_name": "com.chinh.wherefoodapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834278736324-eof7pql5440js3ju9g04qilbugt1qna5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkdrPYF4j2Mj_HA5aWk0HAmZWayBgGw5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834278736324-eof7pql5440js3ju9g04qilbugt1qna5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
