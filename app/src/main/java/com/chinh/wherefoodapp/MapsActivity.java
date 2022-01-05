@@ -79,7 +79,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
 
         polylineList = new ArrayList<>();
-        Log.d("Test_log", "The message WTF.");
         mapFragment.getMapAsync(MapsActivity.this);
 //        btnGo = (Button)findViewById(R.id.btnSearch);
 //        edtPlace = (EditText)findViewById(R.id.edtplace);
@@ -116,19 +115,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Intent intent = getIntent();
 
-        double start_lat = intent.getDoubleExtra("lat", 0);
-        double start_lng = intent.getDoubleExtra("lng", 0);
+        double end_lat = intent.getDoubleExtra("lat", 0);
+        double end_lng = intent.getDoubleExtra("lng", 0);
 
-        double end_lat = intent.getDoubleExtra("current_lat", 0);
-        double end_lng = intent.getDoubleExtra("current_lng", 0);
-        Log.d("Looks good", "LOL");
+        double start_lat = intent.getDoubleExtra("current_lat", 0);
+        double start_lng = intent.getDoubleExtra("current_lng", 0);
         // Add a marker in Sydney and move the camera
         LatLng start_point = new LatLng(start_lat, start_lng);
         LatLng destination = new LatLng(end_lat, end_lng);
 
         mMap.addMarker(new MarkerOptions().position(start_point).title("Location Place"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(start_point));
-        Log.d("Looks good", "LOL");
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder()
                         .target(googleMap.getCameraPosition().target)
                         .zoom(17)
