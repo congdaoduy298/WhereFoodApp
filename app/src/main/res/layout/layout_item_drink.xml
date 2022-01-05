@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    android:padding="8dp"
+    android:layout_margin="8dp"
+    app:cardElevation="12dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/common_google_signin_btn_icon_dark"/>
+
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1.0"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="start"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/txtName"
+            android:text="Name of Drink"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

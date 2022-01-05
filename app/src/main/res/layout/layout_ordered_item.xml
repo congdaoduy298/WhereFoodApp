@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="savedOrderFood"
+            type="com.chinh.wherefoodapp.SavedOrderFood" />
+
+        <variable
+            name="listener"
+            type="com.chinh.wherefoodapp.SavedDrinkListInterface" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="2dp"
+        android:padding="2dp"
+        app:cardElevation="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        android:foreground="?android:attr/selectableItemBackground"
+        tools:ignore="MissingDefaultResource">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:weightSum="5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="73dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="10:10 AM 12/28/2021"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="Đang xử lý"
+                    android:textColor="#FF0000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="52dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        loadImage="@{savedOrderFood.image}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:shadowRadius="2"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/common_google_signin_btn_icon_dark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:text="@{savedOrderFood.quantity+`Sản phẩm`,default=`1 Sản phẩm`}"
+                        android:gravity="center"
+                        android:textSize="15dp"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtNameCart"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="start"
+                            android:layout_marginEnd="0dp"
+                            android:text="@{savedOrderFood.name,default=`Name món ăn`}"
+                            android:textColor="#000000"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/txtDetail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="34dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="133dp"
+                            android:layout_marginBottom="-3dp"
+                            android:onClick="@{()->listener.onViewOrder(savedOrderFood)}"
+                            android:text="Detail"
+                            android:textSize="10dp"
+                            app:backgroundTint="@color/orange" />
+
+                        <TextView
+                            android:id="@+id/txtPriceCart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="@{`Total: `+savedOrderFood.price,default=`$1`}"
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/btnDelete"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_baseline_clear_24" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

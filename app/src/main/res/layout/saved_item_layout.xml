@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="savedPlaceModel"
+            type="com.chinh.wherefoodapp.SavedPlaceModel" />
+
+        <variable
+            name="listener"
+            type="com.chinh.wherefoodapp.SavedLocationInterface" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardElevation="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:id="@+id/placeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/txtPlaceName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{savedPlaceModel.name,default=`Place Name`}"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="0.5"
+                    android:onClick="@{()->listener.onLocationClick(savedPlaceModel)}"
+                    android:src="@drawable/ic_direction"
+                    android:layout_gravity="center"
+                    app:tint="@color/primaryColor" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtPlaceAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/placeLayout"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{savedPlaceModel.address,default=Address}"
+                android:textColor="@color/itemTextColor"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/orderFood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtPlaceAddress"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/orange"
+                android:onClick="@{()->listener.onOrderClick(savedPlaceModel)}"
+                android:radius="15dp"
+                android:text="Order Food"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
