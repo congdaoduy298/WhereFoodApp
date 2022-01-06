@@ -4,20 +4,18 @@ import com.chinh.wherefoodapp.Model.CartModel;
 
 import java.util.List;
 
-public class ResandTime {
-
-    public String restaurant;
-    public String timeOrder;
+public class KeyResTime {
+    public String restaurant,key,timeOrder;
     public List<CartModel> listFood;
 
-   public ResandTime( String restaurant, String timeOrder)
-    {
+    public KeyResTime(String restaurant, String key, String timeOrder, List<CartModel> listFood) {
         this.restaurant = restaurant;
+        this.key = key;
         this.timeOrder = timeOrder;
+        this.listFood = listFood;
     }
-    public ResandTime()
-    {
 
+    public KeyResTime() {
     }
 
     public String getRestaurant() {
@@ -28,18 +26,20 @@ public class ResandTime {
         this.restaurant = restaurant;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public String getTimeOrder() {
         return timeOrder;
     }
 
     public void setTimeOrder(String timeOrder) {
         this.timeOrder = timeOrder;
-    }
-
-    public ResandTime(String restaurant, String timeOrder, List<CartModel> listFood) {
-        this.restaurant = restaurant;
-        this.timeOrder = timeOrder;
-        this.listFood = listFood;
     }
 
     public List<CartModel> getListFood() {

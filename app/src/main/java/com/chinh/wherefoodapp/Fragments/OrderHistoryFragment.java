@@ -1,13 +1,12 @@
 package com.chinh.wherefoodapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,20 +15,15 @@ import androidx.recyclerview.widget.SnapHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.chinh.wherefoodapp.Login;
-import com.chinh.wherefoodapp.Model.DrinkModel;
+import com.chinh.wherefoodapp.OrderHistoryToDetail;
 import com.chinh.wherefoodapp.R;
-import com.chinh.wherefoodapp.SavedDrinkListInterface;
-import com.chinh.wherefoodapp.SavedLocationInterface;
-import com.chinh.wherefoodapp.SavedOrderFood;
-import com.chinh.wherefoodapp.SavedPlaceModel;
+import com.chinh.wherefoodapp.ResAndTime;
 import com.chinh.wherefoodapp.Utility.LoadingDialog;
+import com.chinh.wherefoodapp.ViewHistoryItemOrder;
 import com.chinh.wherefoodapp.databinding.FragmentOrderHistoryBinding;
-import com.chinh.wherefoodapp.databinding.LayoutOrderedItemBinding;
-import com.chinh.wherefoodapp.databinding.SavedItemLayoutBinding;
+import com.chinh.wherefoodapp.databinding.LayoutHistoryOrderedBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,28 +35,25 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import butterknife.BindView;
-
-public class OrderHistoryFragment extends Fragment implements SavedDrinkListInterface{
+public class OrderHistoryFragment extends Fragment implements OrderHistoryToDetail {
     private FragmentOrderHistoryBinding binding;
     private LoadingDialog loadingDialog;
     private FirebaseAuth firebaseAuth;
-    private ArrayList<SavedOrderFood> savedOrderFoodArrayList;
+    private ArrayList<ResAndTime> resAndTimes;
     private FirebaseRecyclerAdapter<String, OrderHistoryFragment.ViewHolder> firebaseRecyclerAdapter;
-    private SavedDrinkListInterface savedDrinkListInterface;
-
+    private OrderHistoryToDetail orderHistoryToDetail;
+    private ArrayList<String> SavedKeyListFood;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentOrderHistoryBinding.inflate(inflater, container, false);
 
-        savedDrinkListInterface = this;
+        orderHistoryToDetail = this;
         firebaseAuth = FirebaseAuth.getInstance();
-        savedOrderFoodArrayList = new ArrayList<>();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Orders History");
+        resAndTimes = new ArrayList<>();
+//        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Orders History");
 
         return binding.getRoot();
 
@@ -97,9 +88,9 @@ public class OrderHistoryFragment extends Fragment implements SavedDrinkListInte
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
 
-                            SavedOrderFood savedOrderFood = snapshot.getValue(SavedOrderFood.class);
-                            holder.binding.setSavedOrderFood(savedOrderFood);
-                            holder.binding.setListener(savedDrinkListInterface);
+                            ResAndTime resAndTime = snapshot.getValue(ResAndTime.class);
+                            holder.binding.setResAndTime(resAndTime);
+                            holder.binding.setListener(orderHistoryToDetail);
                         }
                     }
 
@@ -114,8 +105,8 @@ public class OrderHistoryFragment extends Fragment implements SavedDrinkListInte
             @NonNull
             @Override
             public OrderHistoryFragment.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                LayoutOrderedItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(requireContext()),
-                        R.layout.layout_ordered_item, parent, false);
+                LayoutHistoryOrderedBinding binding = DataBindingUtil.inflate(LayoutInflater.from(requireContext()),
+                        R.layout.layout_history_ordered, parent, false);
                 return new OrderHistoryFragment.ViewHolder(binding);
 
             }
@@ -139,17 +130,22 @@ public class OrderHistoryFragment extends Fragment implements SavedDrinkListInte
     }
 
     @Override
-    public void onViewOrder(SavedOrderFood savedOrderFood) {
+    public void onViewOrder(ResAndTime resAndTime) {
 
-        Navigation.findNavController(getView()).navigate(OrderHistoryFragmentDirections.actionBtnSavedOrdersToOrdersInfomationFragment());
+        Intent fragmentToViewHistory  = new Intent(requireContext(), ViewHistoryItemOrder.class);
+        fragmentToViewHistory.putExtra("restaurant", resAndTime.restaurant);
+        fragmentToViewHistory.putExtra("timeOrder", resAndTime.timeOrder);
+        fragmentToViewHistory.putExtra("key", resAndTime.key);
 
-        Toast.makeText(requireContext(),"detail ",Toast.LENGTH_LONG).show();
+        startActivity(fragmentToViewHistory);
+
+        Toast.makeText(requireContext(),"View Ordered detail ",Toast.LENGTH_LONG).show();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private LayoutOrderedItemBinding binding;
+        private LayoutHistoryOrderedBinding binding;
 
-        public ViewHolder(@NonNull LayoutOrderedItemBinding binding) {
+        public ViewHolder(@NonNull LayoutHistoryOrderedBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

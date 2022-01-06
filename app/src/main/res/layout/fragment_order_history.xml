@@ -12,6 +12,6 @@
         android:layout_height="match_parent"
         android:overScrollMode="never"
         android:scrollbars="none"
-        tools:listitem="@layout/layout_ordered_item" />
+        tools:listitem="@layout/layout_history_ordered" />
 
 </LinearLayout>

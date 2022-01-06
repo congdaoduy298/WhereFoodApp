@@ -67,6 +67,17 @@
         <entry key="..\:/android/FoodAppWhereKhanh/app/src/main/res/layout/username_dialog_layout.xml" value="0.1816123188405797" />
         <entry key="..\:/android/FoodAppWhereKhanh/app/src/main/res/menu/map_type_menu.xml" value="0.23854166666666668" />
         <entry key="..\:/android/FoodAppWhereKhanh/app/src/main/res/menu/nav_menu.xml" value="0.23854166666666668" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/activity_cart.xml" value="0.16485507246376813" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/activity_food_restaurant.xml" value="0.16485507246376813" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/activity_login.xml" value="0.20833333333333334" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/activity_view_history_item.xml" value="0.16485507246376813" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/dialog_layout.xml" value="0.20833333333333334" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/fragment_order_history.xml" value="0.16485507246376813" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/layout_history_ordered.xml" value="0.264" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/layout_item_drink.xml" value="0.20833333333333334" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/layout_list_food_order.xml" value="0.1539855072463768" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/layout_ordered_item.xml" value="0.16485507246376813" />
+        <entry key="..\:/android/FoodDeliveryApp/app/src/main/res/layout/place_item_layout.xml" value="0.20833333333333334" />
         <entry key="..\:/android/WhereFoodApp/app/src/main/res/drawable/bg_login.xml" value="0.2037037037037037" />
         <entry key="..\:/android/WhereFoodApp/app/src/main/res/drawable/ic_bookmark.xml" value="0.14444444444444443" />
         <entry key="..\:/android/WhereFoodApp/app/src/main/res/drawable/ic_camera.xml" value="0.2574074074074074" />

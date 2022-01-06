@@ -1,14 +1,11 @@
 package com.chinh.wherefoodapp;
 
-public class SavedOrderFood {
+public class listFood {
     private String key,name,image,price;
     private int quantity;
     private float totalPrice;
 
-    public SavedOrderFood() {
-    }
-
-    public SavedOrderFood(String key, String name, String image, String price, int quantity, float totalPrice) {
+    public listFood(String key, String name, String image, String price, int quantity, float totalPrice) {
         this.key = key;
         this.name = name;
         this.image = image;

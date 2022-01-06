@@ -6,12 +6,12 @@
     <data>
 
         <variable
-            name="SavedUserPayment"
-            type="com.chinh.wherefoodapp.SavedUserPayment" />
+            name="SavedOrderFood"
+            type="com.chinh.wherefoodapp.SavedOrderFood" />
 
-        <variable
-            name="listener"
-            type="com.chinh.wherefoodapp.SavedDrinkListInterface" />
+<!--        <variable-->
+<!--            name="listener"-->
+<!--            type="com.chinh.wherefoodapp.SavedDrinkListInterface" />-->
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -140,14 +140,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="@{`Total product: `+SavedUserPayment.quantity ,default=`$1`}"
+                android:text="@{`Total product: `+SavedOrderFood.quantity ,default=`$1`}"
                 android:textSize="20dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
-                android:text="@{`Total: `+SavedUserPayment.totalPrice,default=`$1`}"
+                android:text="Total: $1`"
                 android:layout_gravity="center"
                 android:gravity="end"
                 android:textSize="18dp" />

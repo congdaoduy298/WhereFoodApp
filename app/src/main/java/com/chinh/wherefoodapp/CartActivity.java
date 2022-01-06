@@ -1,5 +1,7 @@
 package com.chinh.wherefoodapp;
 
+import static org.greenrobot.eventbus.EventBus.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,7 +63,6 @@ public class CartActivity extends AppCompatActivity implements ICartLoadListener
     private NavDrawerLayoutBinding navDrawerLayoutBinding;
     private ActivityMainBinding activityMainBinding;
     private ToolbarLayoutBinding toolbarLayoutBinding;
-    private TextView ifname, ifphone, ifmail, iftime;
     private String nameRes;
     private ArrayList<String> userSavedHistoryId;
     private FirebaseAuth firebaseAuth;
@@ -100,52 +101,25 @@ public class CartActivity extends AppCompatActivity implements ICartLoadListener
         loadCartFromFirebase();
         getUserSavedLocations();
 
-        ifname = findViewById(R.id.inforName);
-        ifphone = findViewById(R.id.inforPhone);
-        ifmail = findViewById(R.id.inforEmail);
-        iftime = findViewById(R.id.inforTime);
-
-        getUserData();
     }
 
-    private void getUserData() {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users")
-                .child(firebaseAuth.getUid());
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if (snapshot.exists()) {
-
-                    User userModel = snapshot.getValue(User.class);
-                    ifname.setText(userModel.getUsername());
-                    ifphone.setText(userModel.getPhone());
-                    ifmail.setText(userModel.getEmail());
-                    iftime.setText(getTimeNow());
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.w("TAG", "Failed to read value.", error.toException());
-            }
-        });
-    }
 
     private String getTimeNow()
     {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         return formatter.format(date);
     }
 
     private void SavedHistoryFirebase( List<CartModel> cartModels) {
 
-        ResandTime resandTime = new ResandTime(nameRes, getTimeNow(),cartModels);
+
         btnConfirmPay.setOnClickListener(v -> {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("History");
             String key =  myRef.push().getKey();
+
+            ResAndTime resandTime = new ResAndTime(key, nameRes, getTimeNow(),cartModels);
             myRef.child(key).setValue(resandTime,  new DatabaseReference.CompletionListener() {
                 @Override
                 public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
@@ -153,9 +127,7 @@ public class CartActivity extends AppCompatActivity implements ICartLoadListener
                     Intent intent = new Intent(CartActivity.this, MapsActivity.class);
                     Bundle bundle = getIntent().getExtras();
                     intent.putExtras(bundle);
-//                    double end_lat = intent.getDoubleExtra("lat", 0);
-//                    String s = String.valueOf(end_lat);
-//                    Log.d("DCM Cart", s);
+
                     saveUserHistory(key);
                     FirebaseDatabase.getInstance()
                             .getReference("Cart")

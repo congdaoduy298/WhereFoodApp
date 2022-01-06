@@ -674,8 +674,7 @@ public class HomeFragment<onOrderFoodClick> extends Fragment implements OnMapRea
             intent.putExtra("current_lat", currentLocation.getLatitude());
             intent.putExtra("current_lng", currentLocation.getLongitude());
             intent.putExtra("name", googlePlaceModel.getName());
-//            String s = String.valueOf(currentLocation.getLatitude());
-//            Log.d("DCM", s);
+
             startActivity(intent);
         } else {
             Toast.makeText(requireContext(), "Not Found", Toast.LENGTH_SHORT).show();

@@ -16,13 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhereFoodApp">
         <activity
+            android:name=".ViewHistoryItemOrder"
+            android:exported="false" />
+        <activity
             android:name=".CartActivity"
             android:exported="false" />
         <activity
             android:name=".FoodRestaurantActivity"
             android:exported="false" />
-        <activity android:name=".MapsActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false" />
         <activity
             android:name=".DirectionActivity"
             android:exported="false"
