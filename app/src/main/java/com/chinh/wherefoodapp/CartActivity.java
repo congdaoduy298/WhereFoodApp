@@ -64,6 +64,8 @@ public class CartActivity extends AppCompatActivity implements ICartLoadListener
     private ActivityMainBinding activityMainBinding;
     private ToolbarLayoutBinding toolbarLayoutBinding;
     private String nameRes;
+    private double start_lat;
+    private double start_lng;
     private ArrayList<String> userSavedHistoryId;
     private FirebaseAuth firebaseAuth;
     private Bundle savedInstanceState;
@@ -119,14 +121,18 @@ public class CartActivity extends AppCompatActivity implements ICartLoadListener
             DatabaseReference myRef = database.getReference("History");
             String key =  myRef.push().getKey();
 
-            ResAndTime resandTime = new ResAndTime(key, nameRes, getTimeNow(),cartModels);
+            Intent location_intent = getIntent();
+            start_lat = location_intent.getDoubleExtra("lat", 0);
+            start_lng = location_intent.getDoubleExtra("lng", 0);
+
+            Intent intent = new Intent(CartActivity.this, MapsActivity.class);
+            Bundle bundle = getIntent().getExtras();
+            intent.putExtras(bundle);
+
+            ResAndTime resandTime = new ResAndTime(key, nameRes, getTimeNow(),cartModels, start_lat, start_lng);
             myRef.child(key).setValue(resandTime,  new DatabaseReference.CompletionListener() {
                 @Override
                 public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-
-                    Intent intent = new Intent(CartActivity.this, MapsActivity.class);
-                    Bundle bundle = getIntent().getExtras();
-                    intent.putExtras(bundle);
 
                     saveUserHistory(key);
                     FirebaseDatabase.getInstance()

@@ -64,6 +64,13 @@ public class ViewHistoryItemOrder extends AppCompatActivity {
         ViewRestaurants.setOnClickListener(v -> {
             Intent intent  = new Intent(this, FoodRestaurantActivity.class);
             intent.putExtra("name", nameRes);
+            double lat = FirebaseDatabase.getInstance().getReference().child("History").child(key).child("listFood");
+            double lng = FirebaseDatabase.getInstance().getReference().child("History").child(key).child("listFood");
+            fragmentToViewHistory.putExtra("lat", lat);
+            fragmentToViewHistory.putExtra("lng", lng);
+
+            fragmentToViewHistory.putExtra("current_lat", current_lat);
+            fragmentToViewHistory.putExtra("current_lng", current_lng);
             startActivity(intent);
         });
 

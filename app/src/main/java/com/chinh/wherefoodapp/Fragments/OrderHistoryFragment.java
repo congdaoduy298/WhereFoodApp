@@ -136,7 +136,6 @@ public class OrderHistoryFragment extends Fragment implements OrderHistoryToDeta
         fragmentToViewHistory.putExtra("restaurant", resAndTime.restaurant);
         fragmentToViewHistory.putExtra("timeOrder", resAndTime.timeOrder);
         fragmentToViewHistory.putExtra("key", resAndTime.key);
-
         startActivity(fragmentToViewHistory);
 
         Toast.makeText(requireContext(),"View Ordered detail ",Toast.LENGTH_LONG).show();

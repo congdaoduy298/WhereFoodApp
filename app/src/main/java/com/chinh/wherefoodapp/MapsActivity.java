@@ -110,11 +110,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Intent intent = getIntent();
 
-        double end_lat = intent.getDoubleExtra("lat", 0);
-        double end_lng = intent.getDoubleExtra("lng", 0);
+        double start_lat = intent.getDoubleExtra("lat", 0);
+        double start_lng = intent.getDoubleExtra("lng", 0);
 
-        double start_lat = intent.getDoubleExtra("current_lat", 0);
-        double start_lng = intent.getDoubleExtra("current_lng", 0);
+        double end_lat = intent.getDoubleExtra("current_lat", 0);
+        double end_lng = intent.getDoubleExtra("current_lng", 0);
         // Add a marker in Sydney and move the camera
         String a = String.valueOf(end_lat);
         String b = String.valueOf(end_lng);
@@ -137,8 +137,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             requestUrl = "https://maps.googleapis.com/maps/api/directions/json?" +
                     "mode=driving&"+
                     "transit_routing_preference=less_driving&"+
-                    "origin=" + destination.latitude + "," + destination.longitude + "&" +
-                    "&destination=" + start_point.latitude + "," + start_point.longitude + "&" +
+                    "origin=" + start_point.latitude + "," + start_point.longitude + "&" +
+                    "&destination=" + destination.latitude + "," + destination.longitude + "&" +
                     "&key=" + getResources().getString(R.string.API_KEY);
             Log.d("URL",requestUrl);
             mService.getDataFromGoogleApi(requestUrl)

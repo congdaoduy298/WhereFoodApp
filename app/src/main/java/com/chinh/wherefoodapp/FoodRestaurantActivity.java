@@ -145,9 +145,6 @@ public class FoodRestaurantActivity extends AppCompatActivity implements IDrinkL
         Bundle bundle = getIntent().getExtras();
         newIntent.putExtra("name", nameRes);
         Log.d("D/TAG", "NAME RES: "+ nameRes );
-//        double end_lat = newIntent.getDoubleExtra("lat", 0);
-//        String s = String.valueOf(end_lat);
-//        Log.d("DCM FoodRestaurant", s);
         if (bundle != null) {
             newIntent.putExtras(bundle);
         }
